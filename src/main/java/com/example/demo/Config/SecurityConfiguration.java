@@ -82,7 +82,7 @@ public void onAuthenticationFailure(HttpServletRequest request,
 }
 public void onLogoutSuccess(HttpServletRequest request,
                                         HttpServletResponse response,
-                                        Authentication authentication) throws IOException {
+                                      Authentication authentication) throws IOException {
     response.setContentType("application/json;charset=UTF-8");
     User user=(User) authentication.getPrincipal();
     response.getWriter().write(ResultJson.success("TD success").asJonString());
