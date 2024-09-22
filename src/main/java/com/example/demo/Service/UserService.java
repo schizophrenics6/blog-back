@@ -14,5 +14,11 @@ ResultJson sendemail(Account account);
 
 ResultJson updatePassword(Account account);
 
+ResultJson updateaccountpersonal(Account account);
+
+ResultJson selectpersonalpage(Account account);
+
 ResultJson logout(Account account);
+
+
 }

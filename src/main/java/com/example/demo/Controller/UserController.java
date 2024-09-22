@@ -1,9 +1,13 @@
 package com.example.demo.Controller;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.demo.Common.ResultJson;
+import com.example.demo.Service.UserService;
+import com.example.demo.Service.imp.ArticleServiceImpl;
+import com.example.demo.Service.imp.UserServiceImpl;
 import com.example.demo.entity.mysql.Account;
 import com.example.demo.entity.email;
 import com.example.demo.entity.Rigister;
+import com.example.demo.entity.mysql.Article;
 import com.example.demo.mapper.Usermapper;
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpSession;
@@ -19,7 +23,11 @@ public class UserController
     Usermapper usermapper;
     @Resource
     JavaMailSender sender;
+    @Resource
+    UserServiceImpl userServiceimpl;
 
+    @Resource
+    ArticleServiceImpl articleServiceimpl;
     //    @PostMapping("/Account/login")
 //    @ResponseBody
 //    public ResultJson login(@RequestBody Account account) {
@@ -139,13 +147,11 @@ public class UserController
         String randomString = RandomStringUtils.randomAlphanumeric(10);
         session.setAttribute("number", e.getNumber());
         session.setAttribute("code", randomString);
-
         message.setSubject("你的验证码");
         message.setText(randomString);
         message.setTo(e.getNumber()); // 设置邮件发送给谁，可以多个
         message.setFrom("17537709956@163.com"); // 邮件发送者，这里要与配置文件中的保持一致
         sender.send(message);
-
         System.out.println("发送成功");
         return ResultJson.success("发送成功");
     }
@@ -172,6 +178,41 @@ public class UserController
         System.out.println("注册成功");
         return ResultJson.success("注册成功");
     }
+
+    @PostMapping("/Account/personalpage/editor")
+    @ResponseBody
+    public ResultJson updateaccountpersonal(@RequestBody Account account)
+    {
+        return userServiceimpl.updateaccountpersonal(account);
+    }
+
+    @GetMapping("/Account/personalpage")
+    @ResponseBody
+    public ResultJson selectpersonalpage(@RequestBody Account account)
+    {
+return userServiceimpl.selectpersonalpage(account);
+    }
+
+    @PutMapping("/Account/personalpage/updatetop")
+    @ResponseBody
+    public ResultJson inserttop(@RequestBody Article article)
+    {
+        return articleServiceimpl.updatetop(article);
+    }
+
+    @GetMapping("/Account/personalpage/selectpersonalarticle")
+    @ResponseBody
+    public ResultJson selectpersonalarticle(@RequestBody Article article)
+    {
+        return userServiceimpl.selectpersonalarticle(article);
+    }
+
+
+
+
+
+
+
 
     @PostMapping("/Account/logout")
     @ResponseBody

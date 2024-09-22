@@ -22,7 +22,7 @@ public class Article
     private String content;
 
     @TableField("authorid")
-    private String authorid;
+    private int authorid;
 
     @TableField("publishDate")
     private Date publishDate;
@@ -35,4 +35,7 @@ public class Article
 
     @TableField("views")
     private Integer views;
+
+    @TableField("top")
+    private boolean top;
 }

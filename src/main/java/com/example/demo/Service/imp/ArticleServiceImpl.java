@@ -2,6 +2,7 @@ package com.example.demo.Service.imp;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.demo.Common.ResultJson;
 import com.example.demo.Service.ArticleService;
+import com.example.demo.entity.mysql.Account;
 import com.example.demo.entity.mysql.Article;
 import com.example.demo.mapper.Articlemapper;
 import com.example.demo.mapper.Tagmapper;
@@ -57,4 +58,13 @@ Articlemapper articlemapper;
         String title = article.getTitle();
         return ResultJson.success(articlemapper.selectArticlesByKeyword(title));
     }
+
+    @Override
+    public ResultJson updatetop(Article article) {
+        return ResultJson.success(articlemapper.updatetop(article));
+    }
+
+
+
+
 }

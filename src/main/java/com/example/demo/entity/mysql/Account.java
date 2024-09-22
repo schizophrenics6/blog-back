@@ -19,4 +19,18 @@ public class Account {
     @TableField("email")
     private String number;
 
+    @TableField("fans")
+    private Integer fans;
+
+    @TableField("idol")
+    private Integer idol;
+
+    @TableField("sex")
+    private Integer sex;
+
+    @TableField("year")
+    private Integer year;
+
+    @TableField("introduce")
+    private String introduce;
 }
