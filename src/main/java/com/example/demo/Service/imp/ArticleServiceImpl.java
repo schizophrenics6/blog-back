@@ -13,6 +13,7 @@ public class ArticleServiceImpl extends ServiceImpl<Articlemapper, Article> impl
 Articlemapper articlemapper;
 @Resource
     Tagmapper tagmapper;
+
     @Override
     public ResultJson insertArticle(Article article)
     {

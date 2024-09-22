@@ -5,6 +5,7 @@ import com.example.demo.entity.mysql.Account;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Update;
 
 @Mapper
 public interface Usermapper extends BaseMapper <Account>
@@ -14,6 +15,18 @@ public interface Usermapper extends BaseMapper <Account>
 
     @Delete("delete from account where number = #{number}")
     void deleteUserByEmail(String number);
+
+    @Update("UPDATE account SET fans =fans + 1 WHERE id = #{id}")
+    int updateUserfansinsert(Integer id);
+
+    @Update("UPDATE account SET idol =idol + 1 WHERE id = #{id}")
+    int updateUseridolinsert(Integer id);
+
+    @Update("UPDATE account SET fans =fans - 1 WHERE id = #{id}")
+    int updateUserfansdelete(Integer id);
+
+    @Update("UPDATE account SET idol =idol - 1 WHERE id = #{id}")
+    int updateUseridoldelete(Integer id);
 }
 
 
