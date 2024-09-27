@@ -14,7 +14,7 @@ public interface Commentsmapper extends BaseMapper<Comments> {
     @Delete("DELETE FROM Comments WHERE id = #{id}")
     boolean deleteCommentsById( int id);
 
-    @Select("SELECT commentText,CommentDate  from Comments WHERE articleId=#{id}")
+    @Select("SELECT * from Comments WHERE articleId=#{id}")
     Comments selectComments(int articleId);
 }
 

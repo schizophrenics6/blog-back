@@ -15,7 +15,7 @@ public interface UserArticleCollectmapper  extends BaseMapper<UserArticleCollect
     @Delete("DELETE FROM UserArticleCollect WHERE CollectID = #{collectId}")
     boolean deleteCollectById(Integer collectId);
 
-    @Select("SELECT  uac.AccountID, uac.ArticleID, uac.CollectDate, a.title, a.content, a.publishDate, a.tags, a.likes, a.views " +
+    @Select("SELECT  uac.collectid,uac.AccountID, uac.ArticleID, uac.CollectDate, a.title, a.content, a.publishDate, a.tags, a.likes, a.views " +
             "FROM UserArticleCollect uac " +
             "INNER JOIN Article a ON uac.ArticleID = a.id " +
             "WHERE uac.AccountID = #{accountId}")
