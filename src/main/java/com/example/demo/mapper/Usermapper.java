@@ -13,7 +13,7 @@ import java.util.List;
 @Mapper
 public interface Usermapper extends BaseMapper <Account>
 {
-    @Insert("insert into account(username,password,number) values(#{username},#{password},#{number})")
+    @Insert("insert into account(username,password,email) values(#{username},#{password},#{number})")
     void createUser(String username, String password, String number);
 
     @Delete("delete from account where number = #{number}")

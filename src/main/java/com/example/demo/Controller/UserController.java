@@ -100,7 +100,7 @@ public class UserController
         String number = r.getNumber();
         String code = r.getCode();
         QueryWrapper<Account> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("number", number);
+        queryWrapper.eq("email", number);
         Account u = usermapper.selectOne(queryWrapper);
         if (u != null)
         {
@@ -131,9 +131,9 @@ public class UserController
             return ResultJson.error("验证码不正确", "401");
         }
 //删
-        //mapper.deleteUserByEmail(email);
+//        mapper.deleteUserByEmail(email);
 //  创建用户
-        usermapper.createUser(username,password,number);
+        usermapper.createUser(username,password, number);
         System.out.println("注册成功");
         return ResultJson.success("注册成功");
     }
@@ -206,14 +206,6 @@ return userServiceimpl.selectpersonalpage(account);
     {
         return userServiceimpl.selectpersonalarticle(article);
     }
-
-
-
-
-
-
-
-
     @PostMapping("/Account/logout")
     @ResponseBody
     public ResultJson<String> logout(HttpSession session)
